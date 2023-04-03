@@ -4,6 +4,12 @@ export interface PokemonInterface {
   id: number;
   name: string;
   image: string;
+  types: string[];
+  hp: number;
+  attack: number;
+  defense: number;
+  ["special-attack"]: number;
+  ["special-defense"]: number;
   // Include more information here
 }
 
@@ -71,7 +77,28 @@ export interface Pokemon {
   /** The species this Pokémon belongs to. */
   species: string;
   /** A list of base stat values for this Pokémon. */
-  stats: [];
+  stats: PokemonStat[];
   /** A list of details showing types this Pokémon has. */
-  types: [];
+  types: PokemonType[];
+}
+
+export interface PokemonType {
+  /** The order the Pokémon's types are listed in. */
+  slot: number;
+  /** The type the referenced Pokémon has. */
+  type: NamedAPIResource;
+}
+
+export interface PokemonStat {
+  /** The stat the Pokémon has. */
+  stat: NamedAPIResource;
+  /** The effort points (EV) the Pokémon has in the stat. */
+  effort: number;
+  /** The base value of the stat. */
+  base_stat: number;
+}
+
+interface NamedAPIResource {
+  name: string;
+  url: string;
 }

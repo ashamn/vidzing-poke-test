@@ -1,0 +1,18 @@
+.heading {
+  .logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__wrapper {
+      flex-grow: 1;
+      text-align: center;
+    }
+    h1 {
+      text-align: center;
+      font-family: 'Shadows Into Light', 'cursive';
+      font-size: 2.5em;
+      color: #949494;
+    }
+  }
+}
+

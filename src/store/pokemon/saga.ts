@@ -6,6 +6,7 @@ import {
   Pokemon,
   PokemonApiResponse,
   PokemonInterface,
+  PokemonStat,
 } from "@/shared/interfaces/pokemon.interface";
 
 function getPokeList() {
@@ -40,11 +41,26 @@ function* getPokemonListSaga() {
       const pokemonListWithData: PokemonInterface[] = pokeList.map(
         (responseData) => {
           const { data } = responseData;
-          const { name, id, sprites } = data;
+          const { name, id, sprites, types, stats } = data;
+          // Get stats
+          const pStats = stats.reduce((acc, stat) => {
+            const accStats = {
+              ...acc,
+              [stat.stat.name]: stat.base_stat,
+            };
+            return accStats;
+          }, {} as Pick<PokemonInterface, "attack" | "defense" | "hp" | "special-attack" | "special-defense">);
+
           return {
             id: id,
             name: name,
             image: sprites.front_default,
+            types: types.map((t) => t.type.name),
+            hp: pStats.hp,
+            defense: pStats.defense,
+            attack: pStats.attack,
+            ["special-attack"]: pStats["special-attack"],
+            ["special-defense"]: pStats["special-defense"],
           };
         }
       );
