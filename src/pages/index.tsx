@@ -23,10 +23,6 @@ export default function Home() {
           href="https://fonts.gstatic.com"
           crossOrigin=""
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto&family=Shadows+Into+Light&display=swap"
-          rel="stylesheet"
-        />
       </Head>
       <main>
         <ToastContainer />

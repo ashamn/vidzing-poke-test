@@ -11,9 +11,6 @@ interface PokemonListProps {
 export default function PokemonList(props: PokemonListProps) {
   const { pokemonList, pokemonTeam, togglePokeSelection } = props;
 
-  // console.log("pokemonList :>> ", pokemonList);
-  console.log("pokemonTeam :>> ", pokemonTeam);
-
   return (
     <div className={styles.list}>
       {!!pokemonList?.length &&
