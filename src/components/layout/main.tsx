@@ -5,26 +5,22 @@ import {
   searchPokemon,
   togglePokemonTeamMember,
 } from "@/store/pokemon/actions";
-import {
-  getPokeTeam,
-  getSearchList,
-  getSearchTerm,
-  selectPokeList,
-} from "@/store/pokemon/selector";
 import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import PokemonList from "../pokemon-list";
 import Search from "../search";
 import Team from "../team";
 import styles from "./main.module.scss";
 import { toast } from "react-toastify";
+import useMainLoad from "@/hooks/useMainLoad";
 
 export default function Main() {
-  const pokemonList = useSelector(selectPokeList);
-  const pokemonTeam = useSelector(getPokeTeam);
-  const pokemonSearchList = useSelector(getSearchList);
-  const pokemonSearchTerm = useSelector(getSearchTerm);
-  const dispatch = useDispatch();
+  const {
+    pokemonList,
+    pokemonTeam,
+    pokemonSearchList,
+    pokemonSearchTerm,
+    dispatch,
+  } = useMainLoad();
 
   // Team
 

@@ -10,6 +10,7 @@ import {
 } from "react-beautiful-dnd";
 import Image from "next/image";
 import Button from "./ui/button";
+import TeamMember from "./team-member";
 
 interface TeamProps {
   pokemonTeam: PokemonInterface[];
@@ -25,7 +26,6 @@ export default function Team(props: TeamProps) {
   const { pokemonTeam, removeMember, changeOrder, submitTeam } = props;
 
   const getItemStyle = (
-    isDragging: boolean,
     draggableStyle: DraggingStyle | NotDraggingStyle | undefined
   ) => ({
     padding: 16,
@@ -87,52 +87,14 @@ export default function Team(props: TeamProps) {
                     >
                       {(provided, snapshot) => {
                         return (
-                          <div>
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              style={getItemStyle(
-                                snapshot.isDragging,
-                                provided.draggableProps.style
-                              )}
-                            >
-                              <div className={styles.pokemon}>
-                                <Image
-                                  src={pokemon.image}
-                                  alt={pokemon.name}
-                                  height={120}
-                                  width={120}
-                                />
-                                <div className={styles.pokemon__text}>
-                                  <span className={styles.pokemon__name}>
-                                    {pokemon.name}
-                                  </span>
-                                  <div className={styles.remove}>
-                                    <Button
-                                      onClick={() => removeMember(pokemon)}
-                                    >
-                                      Remove
-                                    </Button>
-                                  </div>
-                                </div>
-                              </div>
-                              <div
-                                className={`${styles.background} ${
-                                  snapshot.isDragging ? styles.dragging : ""
-                                }`}
-                              >
-                                <div className={styles.background__img}>
-                                  <Image
-                                    src={pokeballSVG}
-                                    alt={pokemon.name}
-                                    height={120}
-                                    width={120}
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          <TeamMember
+                            provided={provided}
+                            snapshot={snapshot}
+                            getItemStyle={getItemStyle}
+                            removeMember={removeMember}
+                            pokemon={pokemon}
+                            pokeballSVG={pokeballSVG}
+                          />
                         );
                       }}
                     </Draggable>
