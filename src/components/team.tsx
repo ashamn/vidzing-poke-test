@@ -15,10 +15,11 @@ interface TeamProps {
   pokemonTeam: PokemonInterface[];
   removeMember: (a: PokemonInterface) => void;
   changeOrder: (a: PokemonInterface[]) => void;
+  submitTeam: () => void;
 }
 
 export default function Team(props: TeamProps) {
-  const { pokemonTeam, removeMember, changeOrder } = props;
+  const { pokemonTeam, removeMember, changeOrder, submitTeam } = props;
 
   const getItemStyle = (
     isDragging: boolean,
@@ -58,6 +59,11 @@ export default function Team(props: TeamProps) {
 
   return (
     <div className={styles.main}>
+      <div>
+        <Button classes="submit" onClick={submitTeam}>
+          Submit Team
+        </Button>
+      </div>
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="droppable" direction="horizontal">
           {(provided, snapshot) => (

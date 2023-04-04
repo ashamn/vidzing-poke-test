@@ -1,6 +1,8 @@
 import Layout from "@/components/layout/layout";
 import useInitialLoad from "@/hooks/useInitialLoad";
 import Head from "next/head";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
   useInitialLoad();
@@ -27,6 +29,7 @@ export default function Home() {
         />
       </Head>
       <main>
+        <ToastContainer />
         <Layout />
       </main>
     </>

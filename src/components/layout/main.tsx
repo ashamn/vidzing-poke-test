@@ -16,6 +16,7 @@ import PokemonList from "../pokemon-list";
 import Search from "../search";
 import Team from "../team";
 import styles from "./main.module.scss";
+import { toast } from "react-toastify";
 
 export default function Main() {
   const pokemonList = useSelector(selectPokeList);
@@ -23,6 +24,8 @@ export default function Main() {
   const pokemonSearchList = useSelector(getSearchList);
   const pokemonSearchTerm = useSelector(getSearchTerm);
   const dispatch = useDispatch();
+
+  // Team
 
   const togglePokeSelection = useCallback(
     (pokemon: PokemonInterface) => {
@@ -45,14 +48,38 @@ export default function Main() {
     [dispatch]
   );
 
+  const submitTeam = useCallback(async () => {
+    const resp = await fetch("/api/team", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(pokemonTeam),
+    });
+    const response = await resp.json();
+    if (response) {
+      toast.success("Success!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  }, [pokemonTeam]);
+
+  // Search
+
   const setSearch = useCallback(
     (searchTerm: string) => {
       dispatch(searchPokemon(searchTerm));
     },
     [dispatch]
   );
-  console.log("pokemonSearchTerm :>> ", !!pokemonSearchTerm);
-  console.log("pokemonSearchList :>> ", pokemonSearchList);
+
   return (
     <div className={styles.main}>
       {!!pokemonTeam?.length && (
@@ -60,6 +87,7 @@ export default function Main() {
           pokemonTeam={pokemonTeam}
           removeMember={removeMember}
           changeOrder={changeOrder}
+          submitTeam={submitTeam}
         />
       )}
       <Search setSearch={setSearch} />
