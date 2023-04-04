@@ -18,6 +18,9 @@ interface TeamProps {
   submitTeam: () => void;
 }
 
+const pokeballSVG =
+  "https://raw.githubusercontent.com/gist/Galadirith/baaf38c7286b568973cc50a50ff57f4d/raw/34d60cae491bc505c212398b94f12705665c12fc/pokeball.svg";
+
 export default function Team(props: TeamProps) {
   const { pokemonTeam, removeMember, changeOrder, submitTeam } = props;
 
@@ -121,7 +124,7 @@ export default function Team(props: TeamProps) {
                               >
                                 <div className={styles.background__img}>
                                   <Image
-                                    src="https://raw.githubusercontent.com/gist/Galadirith/baaf38c7286b568973cc50a50ff57f4d/raw/34d60cae491bc505c212398b94f12705665c12fc/pokeball.svg"
+                                    src={pokeballSVG}
                                     alt={pokemon.name}
                                     height={120}
                                     width={120}

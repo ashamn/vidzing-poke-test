@@ -44,6 +44,10 @@ export const changePokemonTeamOrder = (
   payload,
 });
 
+export const clearPokemonTeam = (): types.ClearPokemonTeam => ({
+  type: actionTypes.CLEAR_POKEMON_TEAM,
+});
+
 /****************************** SEARCH POKEMON **********************************/
 
 export const searchPokemon = (payload: string): types.SearchPokemon => ({

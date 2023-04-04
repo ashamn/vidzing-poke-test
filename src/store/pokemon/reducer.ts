@@ -58,6 +58,12 @@ export const pokemonReducer = (
         pokemonTeam: action.payload,
       };
     }
+    case actionsTypes.CLEAR_POKEMON_TEAM: {
+      return {
+        ...state,
+        pokemonTeam: [],
+      };
+    }
     case actionsTypes.SEARCH_POKEMON: {
       let searchList: PokemonInterface[] = [];
       if (action.payload !== "") {

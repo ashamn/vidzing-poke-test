@@ -1,6 +1,7 @@
 import { PokemonInterface } from "@/shared/interfaces/pokemon.interface";
 import {
   changePokemonTeamOrder,
+  clearPokemonTeam,
   searchPokemon,
   togglePokemonTeamMember,
 } from "@/store/pokemon/actions";
@@ -68,8 +69,10 @@ export default function Main() {
         progress: undefined,
         theme: "light",
       });
+
+      dispatch(clearPokemonTeam());
     }
-  }, [pokemonTeam]);
+  }, [pokemonTeam, dispatch]);
 
   // Search
 
