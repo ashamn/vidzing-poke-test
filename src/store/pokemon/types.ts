@@ -32,10 +32,18 @@ export type ChangePokemonTeamOrder = {
   payload: PokemonInterface[];
 };
 
+/****************************** SEARCH POKEMON **********************************/
+
+export type SearchPokemon = {
+  type: typeof actionTypes.SEARCH_POKEMON;
+  payload: string;
+};
+
 export type PokemonActions =
   | GetPokemonList
   | GetPokemonListSuccess
   | GetPokemonListFailure
   | TogglePokemonTeamMember
   | RemovePokemonTeamMember
-  | ChangePokemonTeamOrder;
+  | ChangePokemonTeamOrder
+  | SearchPokemon;

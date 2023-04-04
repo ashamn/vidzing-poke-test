@@ -13,3 +13,13 @@ export const getPokeTeam = createSelector(
   [pokeState],
   (pokeState: PokemonStateInterface) => pokeState.pokemonTeam
 );
+
+export const getSearchList = createSelector(
+  [pokeState],
+  (pokeState: PokemonStateInterface) => pokeState.pokemonSearchList
+);
+
+export const getSearchTerm = createSelector(
+  [pokeState],
+  (pokeState: PokemonStateInterface) => pokeState.pokemonSearchTerm
+);

@@ -43,3 +43,10 @@ export const changePokemonTeamOrder = (
   type: actionTypes.CHANGE_POKEMON_TEAM_ORDER,
   payload,
 });
+
+/****************************** SEARCH POKEMON **********************************/
+
+export const searchPokemon = (payload: string): types.SearchPokemon => ({
+  type: actionTypes.SEARCH_POKEMON,
+  payload,
+});
