@@ -1,9 +1,6 @@
 import Layout from "@/components/layout/layout";
 import useInitialLoad from "@/hooks/useInitialLoad";
-import { getPokemonList } from "@/store/pokemon/actions";
 import Head from "next/head";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 
 export default function Home() {
   useInitialLoad();

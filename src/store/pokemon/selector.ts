@@ -8,3 +8,8 @@ export const selectPokeList = createSelector(
   [pokeState],
   (pokeState: PokemonStateInterface) => pokeState.pokemonList
 );
+
+export const getPokeTeam = createSelector(
+  [pokeState],
+  (pokeState: PokemonStateInterface) => pokeState.pokemonTeam
+);

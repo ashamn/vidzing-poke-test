@@ -16,7 +16,26 @@ export type GetPokemonListFailure = {
   payload: string;
 };
 
+/****************************** SELECT POKEMON TEAM **********************************/
+export type TogglePokemonTeamMember = {
+  type: typeof actionTypes.TOGGLE_POKEMON_TEAM_MEMBER;
+  payload: PokemonInterface;
+};
+
+export type RemovePokemonTeamMember = {
+  type: typeof actionTypes.REMOVE_POKEMON_TEAM_MEMBER;
+  payload: PokemonInterface;
+};
+
+export type ChangePokemonTeamOrder = {
+  type: typeof actionTypes.CHANGE_POKEMON_TEAM_ORDER;
+  payload: PokemonInterface[];
+};
+
 export type PokemonActions =
   | GetPokemonList
   | GetPokemonListSuccess
-  | GetPokemonListFailure;
+  | GetPokemonListFailure
+  | TogglePokemonTeamMember
+  | RemovePokemonTeamMember
+  | ChangePokemonTeamOrder;

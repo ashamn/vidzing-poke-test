@@ -20,3 +20,26 @@ export const getPokemonListFailure = (
   type: actionTypes.GET_POKEMON_LIST_FAILURE,
   payload,
 });
+
+/****************************** SELECT POKEMON TEAM **********************************/
+
+export const togglePokemonTeamMember = (
+  payload: PokemonInterface
+): types.TogglePokemonTeamMember => ({
+  type: actionTypes.TOGGLE_POKEMON_TEAM_MEMBER,
+  payload,
+});
+
+export const removePokemonTeamMember = (
+  payload: PokemonInterface
+): types.RemovePokemonTeamMember => ({
+  type: actionTypes.REMOVE_POKEMON_TEAM_MEMBER,
+  payload,
+});
+
+export const changePokemonTeamOrder = (
+  payload: PokemonInterface[]
+): types.ChangePokemonTeamOrder => ({
+  type: actionTypes.CHANGE_POKEMON_TEAM_ORDER,
+  payload,
+});
